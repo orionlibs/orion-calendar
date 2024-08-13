@@ -11,6 +11,9 @@ import lombok.Setter;
 @Builder
 @Getter
 @Setter
+/**
+ * Value object
+ */
 public class FormattedDateTime
 {
     private String longDate;
