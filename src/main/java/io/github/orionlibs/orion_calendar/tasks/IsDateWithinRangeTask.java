@@ -11,13 +11,12 @@ public class IsDateWithinRangeTask
         ZonedDateTime zonedDatetimeToCheck = CalendarService.convertDatetimeToZonedDatetime(dateTimeToCheck);
         ZonedDateTime zonedDatetime1 = CalendarService.convertDatetimeToZonedDatetime(dateTime1);
         ZonedDateTime zonedDatetime2 = CalendarService.convertDatetimeToZonedDatetime(dateTime2);
-
         if(CalendarService.isDateTimeBeforeOrEqualsAnother(dateTime1, dateTime2))
         {
             return zonedDatetimeToCheck.isEqual(zonedDatetime1)
                             || zonedDatetimeToCheck.isEqual(zonedDatetime2)
                             || (zonedDatetimeToCheck.isAfter(zonedDatetime1)
-                                            && zonedDatetimeToCheck.isBefore(zonedDatetime2));
+                            && zonedDatetimeToCheck.isBefore(zonedDatetime2));
         }
         else
         {
@@ -26,6 +25,5 @@ public class IsDateWithinRangeTask
                             (zonedDatetimeToCheck.isBefore(zonedDatetime1)
                                             && zonedDatetimeToCheck.isAfter(zonedDatetime2));
         }
-
     }
 }

@@ -10,7 +10,6 @@ public class ConvertMillisecondsToTemporalUnitTask
     {
         CalendarRules.isValid(unit);
         int divisor = 1;
-
         if(unit == ChronoUnit.SECONDS)
         {
             divisor = Calendar.millisecondsInASecond;
@@ -39,7 +38,6 @@ public class ConvertMillisecondsToTemporalUnitTask
         {
             divisor = (Calendar.millisecondsInADay * Calendar.daysInAYear);
         }
-
         return milliseconds / divisor;
     }
 }

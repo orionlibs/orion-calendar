@@ -8,12 +8,10 @@ public class GetDurationInSecondsRoundedUpToTheClosestNMinuteMarkTask
     {
         long secondsInNMinutes = Calendar.secondsInAMinute * numberOfMinutes;
         long excessSecondsAfterMultipleOfNMinutes = durationInSeconds % secondsInNMinutes;
-
         if(excessSecondsAfterMultipleOfNMinutes != 0)
         {
             durationInSeconds += secondsInNMinutes - (durationInSeconds % secondsInNMinutes);
         }
-
         return durationInSeconds;
     }
 }

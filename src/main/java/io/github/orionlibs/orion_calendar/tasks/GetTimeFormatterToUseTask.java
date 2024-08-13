@@ -8,7 +8,6 @@ public class GetTimeFormatterToUseTask
 {
     public static DateTimeFormatter run(String format)
     {
-
         if(!isBlank(format))
         {
             return DateTimeFormatter.ofPattern(format);
@@ -17,6 +16,5 @@ public class GetTimeFormatterToUseTask
         {
             return DateTimeFormatter.ISO_TIME;
         }
-
     }
 }

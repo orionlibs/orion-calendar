@@ -6,7 +6,6 @@ public class EqualsForDateTask
 {
     public static boolean run(Date date, Object object)
     {
-
         if(object == null || date == null || object.getClass() != date.getClass())
         {
             return false;
@@ -14,14 +13,11 @@ public class EqualsForDateTask
         else
         {
             Date otherDate = (Date)object;
-
             if(doYearsMatch(date, otherDate) && doMonthsMatch(date, otherDate) && doDaysMatch(date, otherDate))
             {
                 return true;
             }
-
         }
-
         return false;
     }
 

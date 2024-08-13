@@ -20,12 +20,10 @@ public class SQLTimestampFormatter
 
     public void setupFormattedDateTime()
     {
-
         if(!timestamp.getHaveFormattedValuesBeenInitialised())
         {
             int offsetHours = CalendarService.getDaylightSavingsHoursToAdd();
             DateTime dateTimeAdjustedForDaylightSavings = null;
-
             if(offsetHours != 0)
             {
                 dateTimeAdjustedForDaylightSavings = DateTime.of(CalendarService.addHoursToDatetime(timestamp, offsetHours));
@@ -42,15 +40,12 @@ public class SQLTimestampFormatter
             {
                 setupFormattedDateTimeUTC();
             }
-
         }
-
     }
 
 
     public void setupFormattedDateTimeUTC()
     {
-
         if(!timestamp.getHaveFormattedValuesBeenInitialised())
         {
             int years = timestamp.getYears();
@@ -63,7 +58,6 @@ public class SQLTimestampFormatter
             buildFormattedDateWithHyphens(years);
             buildFormattedDateWithHyphensWithoutYear();
         }
-
     }
 
 

@@ -8,7 +8,6 @@ public class TokeniseDateStringTask
     public static String[] run(String date) throws InvalidDateException
     {
         DateRules.isValid(date);
-
         if(date.indexOf("-") >= 0)
         {
             return date.split("-");
@@ -21,6 +20,5 @@ public class TokeniseDateStringTask
         {
             return null;
         }
-
     }
 }

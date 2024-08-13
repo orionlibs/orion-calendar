@@ -27,10 +27,8 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
 
     public DateTime run(String dateString, String timeString, DateTimeFormatter formatter, ZoneId zoneID) throws InvalidDateTimeException
     {
-
         if(formattersAlreadyTried != null && !formattersAlreadyTried.isEmpty())
         {
-
             if(formattersAlreadyTried.contains(formatter.toString()))
             {
                 return null;
@@ -39,14 +37,12 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
             {
                 formattersAlreadyTried.add(formatter.toString());
             }
-
         }
         else
         {
             this.formattersAlreadyTried = new ArrayList<>();
             formattersAlreadyTried.add(formatter.toString());
         }
-
         try
         {
             return DateTime.of(ZonedDateTime.parse(dateString + "T" + timeString, formatter));
@@ -55,13 +51,11 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
         {
             return formatDateAndTimeOrDateOrTime(dateString, timeString, formatter, zoneID);
         }
-
     }
 
 
     private DateTime formatDateAndTimeOrDateOrTime(String dateString, String timeString, DateTimeFormatter formatter, ZoneId zoneID) throws InvalidDateTimeException
     {
-
         try
         {
             return DateTime.of(LocalDateTime.parse(dateString + "T" + timeString, formatter));
@@ -70,13 +64,11 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
         {
             return formatDateOrTime(dateString, timeString, zoneID);
         }
-
     }
 
 
     private DateTime formatDateOrTime(String dateString, String timeString, ZoneId zoneID) throws InvalidDateTimeException
     {
-
         try
         {
             formattersAlreadyTried.add(DateTimeFormatter.ISO_DATE.toString());
@@ -87,13 +79,11 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
         {
             return formatTime(dateString, timeString, zoneID);
         }
-
     }
 
 
     private DateTime formatTime(String dateString, String timeString, ZoneId zoneID) throws InvalidDateTimeException
     {
-
         try
         {
             formattersAlreadyTried.add(DateTimeFormatter.ISO_TIME.toString());
@@ -101,35 +91,30 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
         }
         catch(DateTimeParseException e)
         {
-
             try
             {
                 return run(dateString, timeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePattern), zoneID);
             }
             catch(InvalidDateTimeException e1)
             {
-
                 try
                 {
                     return run(dateString, timeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternWithSpaceBetweenDateAndTime), zoneID);
                 }
                 catch(InvalidDateTimeException e2)
                 {
-
                     try
                     {
                         return run(dateString, timeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternYearLast), zoneID);
                     }
                     catch(InvalidDateTimeException e3)
                     {
-
                         try
                         {
                             return run(dateString, timeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternYearLastWithSpaceBetweenDateAndTime), zoneID);
                         }
                         catch(InvalidDateTimeException e4)
                         {
-
                             try
                             {
                                 return run(dateString, timeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternWithoutSeconds), zoneID);
@@ -138,16 +123,10 @@ public class FormatZonedDateAndTimeOrDateAndTimeOrDateOrTimeTask
                             {
                                 throw new InvalidDateTimeException();
                             }
-
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 }

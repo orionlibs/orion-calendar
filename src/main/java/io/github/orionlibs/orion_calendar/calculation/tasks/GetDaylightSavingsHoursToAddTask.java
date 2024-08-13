@@ -9,10 +9,8 @@ public class GetDaylightSavingsHoursToAddTask
 {
     public static int run(ZoneId zoneID)
     {
-
         if(zoneID != null)
         {
-
             if(zoneID.getRules().isDaylightSavings(Instant.now()))
             {
                 return TimeZone.getTimeZone(zoneID).getDSTSavings() / Calendar.millisecondsInAnHour;
@@ -21,11 +19,9 @@ public class GetDaylightSavingsHoursToAddTask
             {
                 return 0;
             }
-
         }
         else
         {
-
             if(TimeZone.getDefault().inDaylightTime(new java.util.Date()))
             {
                 return TimeZone.getDefault().getDSTSavings() / Calendar.millisecondsInAnHour;
@@ -34,8 +30,6 @@ public class GetDaylightSavingsHoursToAddTask
             {
                 return 0;
             }
-
         }
-
     }
 }

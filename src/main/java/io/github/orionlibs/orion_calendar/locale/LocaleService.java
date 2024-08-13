@@ -14,11 +14,11 @@ import lombok.Getter;
 public class LocaleService
 {
     private static LocalesModel locales;
+
     static
     {
         locales = LocalesModel.of(new ArrayList<>(getUniqueLocales()));
     }
-
 
     private static Collection<LocaleModel> getUniqueLocales()
     {
@@ -57,7 +57,6 @@ public class LocaleService
         public LocaleAndTag(final Locale locale)
         {
             this.locale = locale;
-
             if("".equals(locale.getVariant()))
             {
                 tag = MessageFormat.format("{0}_{1}", locale.getLanguage(), locale.getCountry());
@@ -66,7 +65,6 @@ public class LocaleService
             {
                 tag = MessageFormat.format("{0}_{1}_{2}", locale.getLanguage(), locale.getCountry(), locale.getVariant());
             }
-
         }
     }
 

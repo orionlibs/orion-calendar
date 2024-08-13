@@ -48,7 +48,6 @@ public class WeekPeriod
     @Override
     public boolean equals(Object other)
     {
-
         if(this == other)
         {
             return true;
@@ -62,7 +61,6 @@ public class WeekPeriod
         {
             return false;
         }
-
     }
 
 

@@ -17,13 +17,12 @@ public class IsTimeWithinRangeIgnoringSecondsAndMillisecondsTask
         LocalTime localTime2 = time2.toLocalTime();
         localTime2 = localTime2.minusSeconds(localTime2.getSecond());
         localTime2 = localTime2.minusNanos(localTime2.getNano());
-
         if(CalendarService.isTimeBeforeOrEqualsAnother(time1, time2))
         {
             return localTimeToCheck.equals(localTime1)
                             || localTimeToCheck.equals(localTime2)
                             || (localTimeToCheck.isAfter(localTime1)
-                                            && localTimeToCheck.isBefore(localTime2));
+                            && localTimeToCheck.isBefore(localTime2));
         }
         else
         {
@@ -32,6 +31,5 @@ public class IsTimeWithinRangeIgnoringSecondsAndMillisecondsTask
                             (localTimeToCheck.isBefore(localTime1)
                                             && localTimeToCheck.isAfter(localTime2));
         }
-
     }
 }

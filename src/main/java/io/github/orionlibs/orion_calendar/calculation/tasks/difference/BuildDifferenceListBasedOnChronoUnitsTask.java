@@ -8,10 +8,8 @@ class BuildDifferenceListBasedOnChronoUnitsTask
     {
         List<String> unitsToUse = dateTimeDifference.getUnitsToUse();
         Long[] durationList = new Long[unitsToUse.size()];
-
         for(int i = 0; i < unitsToUse.size(); i++)
         {
-
             if("y".equals(unitsToUse.get(i)))
             {
                 durationList[i] = dateTimeDifference.getNumberOfYears();
@@ -40,9 +38,7 @@ class BuildDifferenceListBasedOnChronoUnitsTask
             {
                 durationList[i] = dateTimeDifference.getNumberOfSeconds();
             }
-
         }
-
         return durationList;
     }
 }

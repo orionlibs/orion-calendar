@@ -16,19 +16,15 @@ public class AddWorkingDaysToDatetimeTask
         CalendarRules.isValid(zone);
         LocalDate localDate = CalendarService.convertInstantToLocalDate(datetime.toInstant(), zone);
         ZonedDateTime zonedDatetime = null;
-
         while(numberOfDays > 0)
         {
             zonedDatetime = localDate.plusDays(1).atStartOfDay(zone);
             localDate = zonedDatetime.toLocalDate();
-
             if(CalendarService.isWeekday(zonedDatetime))
             {
                 numberOfDays--;
             }
-
         }
-
         return DateTime.of(zonedDatetime);
     }
 }

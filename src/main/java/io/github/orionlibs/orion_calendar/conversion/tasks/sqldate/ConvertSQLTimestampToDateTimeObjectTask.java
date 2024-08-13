@@ -9,7 +9,6 @@ public class ConvertSQLTimestampToDateTimeObjectTask
 {
     public static DateTime run(Timestamp SQLDate)
     {
-
         if(SQLDate != null)
         {
             Date date = Date.of(SQLDate.getYear() + 1900, SQLDate.getMonth() + 1, SQLDate.getDate());
@@ -20,6 +19,5 @@ public class ConvertSQLTimestampToDateTimeObjectTask
         {
             return null;
         }
-
     }
 }

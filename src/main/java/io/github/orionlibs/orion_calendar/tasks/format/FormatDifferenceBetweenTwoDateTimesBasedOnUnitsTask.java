@@ -15,10 +15,8 @@ public class FormatDifferenceBetweenTwoDateTimesBasedOnUnitsTask
         String[] unitsToUse = getUnitsToUse();
         Assert.lengthsMatch("The number of duration list tokens mismatch the number of units provided.", durationAsList, unitsToUse);
         String formattedDuration = "";
-
         for(int i = 0; i < unitsToUse.length; i++)
         {
-
             if("y".equals(unitsToUse[i]))
             {
                 formattedDuration += formatDurationString(i, "year");
@@ -47,16 +45,13 @@ public class FormatDifferenceBetweenTwoDateTimesBasedOnUnitsTask
             {
                 formattedDuration += formatDurationString(i, "second");
             }
-
         }
-
         return formattedDuration;
     }
 
 
     private String[] getUnitsToUse()
     {
-
         if(units != null && !units.isEmpty())
         {
             return units.split("");
@@ -64,24 +59,20 @@ public class FormatDifferenceBetweenTwoDateTimesBasedOnUnitsTask
         else
         {
             return new String[]
-            {"y", "M", "W", "d", "h", "m", "s"};
+                            {"y", "M", "W", "d", "h", "m", "s"};
         }
-
     }
 
 
     private String formatDurationString(int i, String unit)
     {
         String formattedDuration = durationAsList[i] + " " + unit;
-
         if(durationAsList[i] != 1)
         {
             formattedDuration += "s";
         }
-
         if((i + 1) < durationAsList.length && durationAsList[i + 1] != null)
         {
-
             if(i == durationAsList.length - 2)
             {
                 formattedDuration += " and ";
@@ -90,9 +81,7 @@ public class FormatDifferenceBetweenTwoDateTimesBasedOnUnitsTask
             {
                 formattedDuration += ", ";
             }
-
         }
-
         return formattedDuration;
     }
 }

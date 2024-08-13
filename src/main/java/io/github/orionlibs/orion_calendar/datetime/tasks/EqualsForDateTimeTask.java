@@ -6,7 +6,6 @@ public class EqualsForDateTimeTask
 {
     public static boolean run(DateTime dateTime, Object object)
     {
-
         if(object == null || dateTime == null || object.getClass() != dateTime.getClass())
         {
             return false;
@@ -14,7 +13,6 @@ public class EqualsForDateTimeTask
         else
         {
             DateTime otherDate = (DateTime)object;
-
             if(doDatesAndTimesMatch(dateTime, otherDate)
                             && (areZonesNull(dateTime, otherDate) || doZonesMatch(dateTime, otherDate)))
             {
@@ -24,9 +22,7 @@ public class EqualsForDateTimeTask
             {
                 return false;
             }
-
         }
-
     }
 
 

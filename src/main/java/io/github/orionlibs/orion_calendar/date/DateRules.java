@@ -12,12 +12,10 @@ public class DateRules
     public static void isValidSQLDate(String date)
     {
         Assert.notEmpty(date, "SQL date is null/empty.");
-
         if(date.indexOf("-") == -1)
         {
             throw new InvalidArgumentException("SQL date does not have the '-' separator.");
         }
-
     }
 
 
@@ -31,7 +29,7 @@ public class DateRules
     {
         //NumberRules.haveNaturalNumberValue(year, month, day);
         Arrays.stream(new Integer[]
-        {year, month, day}).forEach(x -> hasNaturalNumberValue(x));
+                        {year, month, day}).forEach(x -> hasNaturalNumberValue(x));
     }
 
 
@@ -43,7 +41,6 @@ public class DateRules
 
     private static boolean DoesNumberHaveNaturalNumberValueTask(Object x)
     {
-
         if(x instanceof BigInteger && isPositive((BigInteger)x))
         {
             return true;
@@ -51,33 +48,27 @@ public class DateRules
         else if(x instanceof BigDecimal)
         {
             BigDecimal temp = (BigDecimal)x;
-
             if(temp.compareTo(new BigDecimal(temp.toBigInteger())) == 0
                             && isPositive(temp))
             {
                 return true;
             }
-
         }
         else if(x instanceof Number)
         {
             BigDecimal temp = new BigDecimal(((Number)x).toString());
-
             if(temp.compareTo(new BigDecimal(temp.toBigInteger())) == 0
                             && isPositive(temp))
             {
                 return true;
             }
-
         }
-
         return false;
     }
 
 
     private static boolean isPositive(Number x)
     {
-
         if(isBigInteger(x))
         {
             return ((BigInteger)x).compareTo(BigInteger.ZERO) > 0;
@@ -86,7 +77,6 @@ public class DateRules
         {
             return ((BigDecimal)x).compareTo(BigDecimal.ZERO) > 0;
         }
-
         return false;
     }
 
@@ -112,12 +102,10 @@ public class DateRules
     public static void isValid(String dateString) throws InvalidDateException
     {
         Assert.notEmpty(dateString, "dateString is null/empty.");
-
         if(dateString.indexOf("-") == -1 && dateString.indexOf("/") == -1)
         {
             throw new InvalidDateException();
         }
-
     }
 
 

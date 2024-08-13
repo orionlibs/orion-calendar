@@ -12,7 +12,6 @@ public class GetFormattedDateTimeTask
     {
         DateTimeRules.isValid(datetime);
         FormattedDateTimeBuilder formattedDateTimeBuilder = FormattedDateTime.builder();
-
         if(datetime.getDate() != null)
         {
             formattedDateTimeBuilder = formattedDateTimeBuilder.dateSplitByHyphens(datetime.getDate().getDateStringSplitByHyphens());
@@ -21,13 +20,11 @@ public class GetFormattedDateTimeTask
             formattedDateTimeBuilder = formattedDateTimeBuilder.dateSplitBySlashesYearFirst(datetime.getDate().getDateStringSplitBySlashesYearFirst());
             formattedDateTimeBuilder = formattedDateTimeBuilder.longDate(datetime.getDate().getLongDateYearFirstString());
         }
-
         if(datetime.getTime() != null)
         {
             formattedDateTimeBuilder = formattedDateTimeBuilder.time(datetime.getTime().getTimeString());
             formattedDateTimeBuilder = formattedDateTimeBuilder.timeWithISOFormat(datetime.getTime().getTimeStringInISOFormat());
         }
-
         return formattedDateTimeBuilder.build();
     }
 }

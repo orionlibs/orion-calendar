@@ -8,7 +8,6 @@ import io.github.orionlibs.orion_calendar.calculation.tasks.GetAllWeeksOfTheLast
 import io.github.orionlibs.orion_calendar.calculation.tasks.GetAllWeeksOfTheLastNWeeksAsPairsOfStartAndEndDateWithFirstDayOfWeekBeingSundayTask;
 import io.github.orionlibs.orion_calendar.calculation.tasks.GetDaylightSavingsHoursToAddTask;
 import io.github.orionlibs.orion_calendar.calculation.tasks.GetNumberOfMonthDaysTask;
-import io.github.orionlibs.orion_calendar.calculation.tasks.difference.GetDifferenceAsListBetweenTwoDateTimesBasedOnChronoUnitsTask;
 import io.github.orionlibs.orion_calendar.calculation.tasks.difference.GetDifferenceBetweenTwoDateTimesInDaysTask;
 import io.github.orionlibs.orion_calendar.calculation.tasks.difference.GetDifferenceBetweenTwoDateTimesInMillisecondsTask;
 import io.github.orionlibs.orion_calendar.calculation.tasks.difference.GetDifferenceBetweenTwoDatesInDaysTask;
@@ -672,7 +671,7 @@ public class CalendarService
 
 
     /**
-     * @param date = has the form yyyy-mm-dd
+     * @param SQLDate = has the form yyyy-mm-dd
      * @return
      */
     public static int extractYearFromSQLDateString(String SQLDate)
@@ -693,7 +692,7 @@ public class CalendarService
 
 
     /**
-     * @param date = has the form yyyy-mm-dd
+     * @param SQLDate = has the form yyyy-mm-dd
      * @return
      */
     public static int extractMonthFromSQLDateString(String SQLDate)
@@ -714,7 +713,7 @@ public class CalendarService
 
 
     /**
-     * @param date = has the form yyyy-mm-dd
+     * @param SQLDate = has the form yyyy-mm-dd
      * @return
      */
     public static int extractDayFromSQLDateString(String SQLDate)
@@ -1006,7 +1005,6 @@ public class CalendarService
 
     public static int getDaylightSavingsHoursToAdd()
     {
-
         //System.out.println(TimeZone.getTimeZone("GB").inDaylightTime(new java.util.Date()));
         //System.out.println(TimeZone.getTimeZone("GB").inDaylightTime(new java.util.Date(2021, 9, 30)));
         if(ZoneId.of("GB").getRules().isDaylightSavings(Instant.now()))
@@ -1017,7 +1015,6 @@ public class CalendarService
         {
             return 0;
         }
-
     }
 
 
@@ -1035,7 +1032,6 @@ public class CalendarService
 
     public static int getDaylightSavingsMinutesToAdd(ZoneId zoneID)
     {
-
         if(zoneID != null)
         {
             return getTimeZoneOffsetInMinutesFromUTC(getCurrentDatetimeAtZone(zoneID));
@@ -1044,7 +1040,6 @@ public class CalendarService
         {
             return getTimeZoneOffsetInMinutesFromUTC(getCurrentDatetimeAtLocalZone());
         }
-
     }
 
 
@@ -1269,12 +1264,6 @@ public class CalendarService
     public static String formatDifferenceBetweenTwoDateTimesBasedOnUnits(Long[] durationAsList, String units)
     {
         return new FormatDifferenceBetweenTwoDateTimesBasedOnUnitsTask().run(durationAsList, units);
-    }
-
-
-    public static Long[] getDifferenceAsListBetweenTwoDateTimesBasedOnUnits(String units, DateTime startDateTime, DateTime endDateTime)
-    {
-        return new GetDifferenceAsListBetweenTwoDateTimesBasedOnChronoUnitsTask().run(units, startDateTime, endDateTime);
     }
 
 

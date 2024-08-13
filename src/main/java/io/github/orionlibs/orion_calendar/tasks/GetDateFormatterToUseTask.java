@@ -11,14 +11,12 @@ public class GetDateFormatterToUseTask
     public static DateTimeFormatter run(String dateString, String format) throws InvalidDateException
     {
         DateRules.isValid(dateString);
-
         if(!isBlank(format))
         {
             return DateTimeFormatter.ofPattern(format);
         }
         else
         {
-
             if(dateString.indexOf("-") >= 0)
             {
                 return DateTimeFormatter.ofPattern("uuuu-MM-dd");
@@ -27,8 +25,6 @@ public class GetDateFormatterToUseTask
             {
                 return DateTimeFormatter.ofPattern("uuuu/MM/dd");
             }
-
         }
-
     }
 }

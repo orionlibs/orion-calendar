@@ -20,10 +20,8 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
 
     public DateTime run(String dateTimeString, DateTimeFormatter formatter) throws InvalidDateTimeException
     {
-
         if(formattersAlreadyTried != null && !formattersAlreadyTried.isEmpty())
         {
-
             if(formattersAlreadyTried.contains(formatter.toString()))
             {
                 return null;
@@ -32,14 +30,12 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
             {
                 formattersAlreadyTried.add(formatter.toString());
             }
-
         }
         else
         {
             this.formattersAlreadyTried = new ArrayList<>();
             formattersAlreadyTried.add(formatter.toString());
         }
-
         try
         {
             return DateTime.of(ZonedDateTime.parse(dateTimeString, formatter));
@@ -48,13 +44,11 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
         {
             return formatDateTimeOrDateOrTime(dateTimeString, formatter);
         }
-
     }
 
 
     private DateTime formatDateTimeOrDateOrTime(String dateTimeString, DateTimeFormatter formatter) throws InvalidDateTimeException
     {
-
         try
         {
             return DateTime.of(LocalDateTime.parse(dateTimeString, formatter));
@@ -63,13 +57,11 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
         {
             return formatDateOrTime(dateTimeString);
         }
-
     }
 
 
     private DateTime formatDateOrTime(String dateTimeString) throws InvalidDateTimeException
     {
-
         try
         {
             formattersAlreadyTried.add(DateTimeFormatter.ISO_DATE.toString());
@@ -79,7 +71,6 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
         {
             return formatTime(dateTimeString);
         }
-
     }
 
 
@@ -91,7 +82,6 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
 
     private DateTime formatTime(String dateTimeString) throws InvalidDateTimeException
     {
-
         try
         {
             formattersAlreadyTried.add(DateTimeFormatter.ISO_TIME.toString());
@@ -99,35 +89,30 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
         }
         catch(DateTimeParseException e)
         {
-
             try
             {
                 return run(dateTimeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePattern));
             }
             catch(InvalidDateTimeException e1)
             {
-
                 try
                 {
                     return run(dateTimeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternWithSpaceBetweenDateAndTime));
                 }
                 catch(InvalidDateTimeException e2)
                 {
-
                     try
                     {
                         return run(dateTimeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternYearLast));
                     }
                     catch(InvalidDateTimeException e3)
                     {
-
                         try
                         {
                             return run(dateTimeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternYearLastWithSpaceBetweenDateAndTime));
                         }
                         catch(InvalidDateTimeException e4)
                         {
-
                             try
                             {
                                 return run(dateTimeString, CalendarService.getDateTimeFormatterToUse(Calendar.fullDatetimePatternYearLastWithCommaBetweenDateAndTime));
@@ -136,16 +121,10 @@ public class FormatZonedDateTimeOrDateTimeOrDateOrTimeTask
                             {
                                 throw new InvalidDateTimeException();
                             }
-
                         }
-
                     }
-
                 }
-
             }
-
         }
-
     }
 }

@@ -11,7 +11,6 @@ public class ConvertSQLTimestampToDateTimeObjectAndAdjustForDaylightSavingsTask
 {
     public static DateTime run(Timestamp SQLDate)
     {
-
         if(SQLDate != null)
         {
             int timezoneOffsetInHours = CalendarService.getDaylightSavingsHoursToAdd();
@@ -24,6 +23,5 @@ public class ConvertSQLTimestampToDateTimeObjectAndAdjustForDaylightSavingsTask
         {
             return null;
         }
-
     }
 }

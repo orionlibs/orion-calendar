@@ -6,7 +6,6 @@ public class EqualsForTimeTask
 {
     public static boolean run(Time time, Object object)
     {
-
         if(object == null || time == null || object.getClass() != time.getClass())
         {
             return false;
@@ -17,7 +16,6 @@ public class EqualsForTimeTask
             return doHoursMatch(time, otherTime) && doMinutesMatch(time, otherTime) && doSecondsMatch(time, otherTime)
                             && doMillisecondsMatch(time, otherTime);
         }
-
     }
 
 

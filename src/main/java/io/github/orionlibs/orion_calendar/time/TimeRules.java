@@ -12,7 +12,7 @@ public class TimeRules
     {
         //NumberRules.haveNonnegativeIntegerNumberValue(hours, minutes, seconds, milliseconds);
         Arrays.stream(new Integer[]
-        {hours, minutes, seconds, milliseconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
+                        {hours, minutes, seconds, milliseconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
     }
 
 
@@ -20,7 +20,7 @@ public class TimeRules
     {
         //NumberRules.haveNonnegativeIntegerNumberValue(hours, minutes, seconds);
         Arrays.stream(new Integer[]
-        {hours, minutes, seconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
+                        {hours, minutes, seconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
     }
 
 
@@ -28,7 +28,7 @@ public class TimeRules
     {
         //NumberRules.haveNonnegativeIntegerNumberValue(hours, minutes, seconds, epochMilliseconds);
         Arrays.stream(new Long[]
-        {(long)hours, (long)minutes, (long)seconds, epochMilliseconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
+                        {(long)hours, (long)minutes, (long)seconds, epochMilliseconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
     }
 
 
@@ -36,7 +36,7 @@ public class TimeRules
     {
         //NumberRules.haveNonnegativeIntegerNumberValue(hours, minutes, seconds, milliseconds, epochMilliseconds);
         Arrays.stream(new Long[]
-        {(long)hours, (long)minutes, (long)seconds, (long)milliseconds, epochMilliseconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
+                        {(long)hours, (long)minutes, (long)seconds, (long)milliseconds, epochMilliseconds}).forEach(x -> hasNonnegativeIntegerNumberValue(x));
     }
 
 
@@ -49,7 +49,6 @@ public class TimeRules
 
     private static boolean isNegative(Number x)
     {
-
         if(isBigInteger(x))
         {
             return ((BigInteger)x).compareTo(BigInteger.ZERO) < 0;
@@ -58,14 +57,12 @@ public class TimeRules
         {
             return ((BigDecimal)x).compareTo(BigDecimal.ZERO) < 0;
         }
-
         return false;
     }
 
 
     private static boolean hasIntegerValue(Object x)
     {
-
         if(x instanceof BigInteger)
         {
             return true;
@@ -73,24 +70,19 @@ public class TimeRules
         else if(x instanceof BigDecimal)
         {
             BigDecimal temp = (BigDecimal)x;
-
             if(temp.compareTo(new BigDecimal(temp.toBigInteger())) == 0)
             {
                 return true;
             }
-
         }
         else if(x instanceof Number)
         {
             BigDecimal temp = new BigDecimal(((Number)x).toString());
-
             if(temp.compareTo(new BigDecimal(temp.toBigInteger())) == 0)
             {
                 return true;
             }
-
         }
-
         return false;
     }
 
@@ -116,24 +108,20 @@ public class TimeRules
     public static void isValid(String timeString) throws InvalidTimeException
     {
         Assert.notEmpty(timeString, "timeString is null/empty.");
-
         if(timeString.indexOf(":") == -1)
         {
             throw new InvalidTimeException();
         }
-
     }
 
 
     public static void isValid(String timeString, boolean includesMilliseconds) throws InvalidTimeException
     {
         isValid(timeString);
-
         if(includesMilliseconds && timeString.indexOf(".") == -1)
         {
             throw new InvalidTimeException("timeString is supposed to include milliseconds, but it doesn't.");
         }
-
     }
 
 

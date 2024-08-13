@@ -9,14 +9,12 @@ public class PrintDateAsTodayOrTomorrowOrFullDateTask
     {
         Date currentDate = CalendarService.getCurrentDateAdjustingForDaylightSavings();
         String result = "";
-
         if(date.equals(currentDate))
         {
             result = "today";
         }
         else
         {
-
             if(date.equals(CalendarService.addDaysToCurrentDatetimeAdjustingForDaylightSavings(1).getDate()))
             {
                 result = "tomorrow";
@@ -25,9 +23,7 @@ public class PrintDateAsTodayOrTomorrowOrFullDateTask
             {
                 result = date.getDateStringSplitByHyphensYearFirst();
             }
-
         }
-
         return result;
     }
 }

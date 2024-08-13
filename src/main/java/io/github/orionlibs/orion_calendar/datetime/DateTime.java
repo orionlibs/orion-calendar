@@ -410,29 +410,22 @@ public class DateTime
     public String printInSQLFormatWithStringBetweenDateAndTime(String stringBetweenDateAndtime)
     {
         String formattedDateTime = "";
-
         if(date != null)
         {
             formattedDateTime += date.getDateStringSplitByHyphensYearFirst();
         }
-
         if(time != null)
         {
-
             if(date != null)
             {
                 formattedDateTime += " ";
-
                 if(stringBetweenDateAndtime != null && !stringBetweenDateAndtime.isEmpty())
                 {
                     formattedDateTime += stringBetweenDateAndtime + " ";
                 }
-
             }
-
             formattedDateTime += time.getTimeStringWithoutMilliseconds();
         }
-
         return formattedDateTime;
     }
 
@@ -440,29 +433,22 @@ public class DateTime
     public String printInSQLFormatWithStringBetweenDateAndTimeWithoutSeconds(String stringBetweenDateAndtime)
     {
         String formattedDateTime = "";
-
         if(date != null)
         {
             formattedDateTime += date.getDateStringSplitByHyphensYearFirst();
         }
-
         if(time != null)
         {
-
             if(date != null)
             {
                 formattedDateTime += " ";
-
                 if(stringBetweenDateAndtime != null)
                 {
                     formattedDateTime += " " + stringBetweenDateAndtime + " ";
                 }
-
             }
-
             formattedDateTime += time.getTimeStringWithoutSeconds();
         }
-
         return formattedDateTime;
     }
 
@@ -470,10 +456,8 @@ public class DateTime
     public String printInInternationalFormatWithStringBetweenDateAndTimeWithoutSeconds(String stringBetweenDateAndtime, boolean printDateWithoutYear, boolean printDateInLongFormat) throws InvalidDateException
     {
         String formattedDateTime = "";
-
         if(date != null)
         {
-
             if(printDateWithoutYear && printDateInLongFormat)
             {
                 formattedDateTime += CalendarService.convertDateToLongFormatWithoutYear(date);
@@ -490,26 +474,19 @@ public class DateTime
             {
                 formattedDateTime += date.getDateStringSplitByHyphens();
             }
-
         }
-
         if(time != null)
         {
-
             if(date != null)
             {
                 formattedDateTime += " ";
-
                 if(stringBetweenDateAndtime != null)
                 {
                     formattedDateTime += stringBetweenDateAndtime + " ";
                 }
-
             }
-
             formattedDateTime += time.getTimeStringWithoutSeconds();
         }
-
         return formattedDateTime;
     }
 
@@ -519,10 +496,8 @@ public class DateTime
         String formattedDateTime = "";
         int offsetMinutes = CalendarService.getDaylightSavingsMinutesToAdd();
         DateTime dateTimeAdjustedForDaylightSavings = null;
-
         if(date != null)
         {
-
             if(offsetMinutes != 0)
             {
                 dateTimeAdjustedForDaylightSavings = CalendarService.addMinutesToDatetime(this, offsetMinutes);
@@ -532,17 +507,13 @@ public class DateTime
             {
                 formattedDateTime += date.getDateStringSplitByHyphensYearFirst();
             }
-
         }
-
         if(time != null)
         {
-
             if(date != null)
             {
                 formattedDateTime += " ";
             }
-
             if(offsetMinutes != 0)
             {
                 formattedDateTime += dateTimeAdjustedForDaylightSavings.getTime().getTimeString();
@@ -551,9 +522,7 @@ public class DateTime
             {
                 formattedDateTime += time.getTimeString();
             }
-
         }
-
         return formattedDateTime;
     }
 
@@ -587,10 +556,8 @@ public class DateTime
         String formattedDateTime = "";
         int offsetMinutes = CalendarService.getDaylightSavingsMinutesToAdd();
         DateTime dateTimeAdjustedForDaylightSavings = null;
-
         if(date != null)
         {
-
             if(offsetMinutes != 0)
             {
                 dateTimeAdjustedForDaylightSavings = CalendarService.addMinutesToDatetime(this, offsetMinutes);
@@ -600,9 +567,7 @@ public class DateTime
             {
                 formattedDateTime += date.getDateStringSplitByHyphensYearFirst();
             }
-
         }
-
         return formattedDateTime;
     }
 
@@ -624,10 +589,8 @@ public class DateTime
         String formattedTime = "";
         int offsetHours = CalendarService.getDaylightSavingsHoursToAdd();
         DateTime dateTimeAdjustedForDaylightSavings = null;
-
         if(time != null)
         {
-
             if(offsetHours != 0)
             {
                 dateTimeAdjustedForDaylightSavings = CalendarService.addHoursToDatetime(this, offsetHours);
@@ -637,9 +600,7 @@ public class DateTime
             {
                 formattedTime += time.getTimeString();
             }
-
         }
-
         return formattedTime;
     }
 

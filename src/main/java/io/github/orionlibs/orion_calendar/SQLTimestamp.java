@@ -97,10 +97,8 @@ public class SQLTimestamp extends Timestamp
 
     public void formatTimestampFields()
     {
-
         if(!haveFormattedValuesBeenInitialised)
         {
-
             if(formatUsingUTC)
             {
                 FormattedSQLTimestamp.setupFormattedDateTimeUTC(this);
@@ -109,10 +107,8 @@ public class SQLTimestamp extends Timestamp
             {
                 FormattedSQLTimestamp.setupFormattedDateTime(this);
             }
-
             setHaveFormattedValuesBeenInitialised(true);
         }
-
     }
 
 

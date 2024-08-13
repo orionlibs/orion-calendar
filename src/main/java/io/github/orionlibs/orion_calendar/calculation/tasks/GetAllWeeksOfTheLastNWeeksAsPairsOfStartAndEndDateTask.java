@@ -14,14 +14,12 @@ public class GetAllWeeksOfTheLastNWeeksAsPairsOfStartAndEndDateTask
         List<WeekPeriod> weeks = new ArrayList<>();
         Date lastSunday = CalendarService.getLastSundayDateBasedOnCurrentDate();
         DateTime lastSundayTemp = DateTime.of(lastSunday);
-
         for(int i = 0; i < numberOfWeeksToReturn; i++)
         {
             int daysToSubtractToFindStartOfWeek = (-7 * i) - 6;
             Date startOfWeek = CalendarService.addDaysToDatetime(lastSundayTemp, daysToSubtractToFindStartOfWeek).getDate();
             weeks.add(CalendarService.buildWeekPeriodSplitByHyphensYearFirst(startOfWeek.getDateStringSplitByHyphensYearFirst()));
         }
-
         return weeks;
     }
 }

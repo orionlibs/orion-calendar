@@ -13,10 +13,9 @@ public class AddDaysToDatetimeTask
     {
         DateTimeRules.isValidIgnoringZoneID(datetime);
         CalendarRules.isValid(zone);
-
         if(numberOfDays == 0)
         {
-            return datetime.getCopy();
+            return DateTime.of(datetime.getDate(), datetime.getTime(), datetime.getZoneID());
         }
         else
         {
@@ -25,6 +24,5 @@ public class AddDaysToDatetimeTask
                             .atStartOfDay(zone);
             return DateTime.of(zonedDatetime);
         }
-
     }
 }
